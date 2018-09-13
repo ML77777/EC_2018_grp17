@@ -4,3 +4,5 @@
 *.dylib
 *.txt
 *.jar
+tmp
+javabbob
