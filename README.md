@@ -1,10 +1,11 @@
 # EC_2018_grp17
 
 #To create the class
-javac	-cp	contest.jar	 player17.java
+javac	-cp	contest.jar	 player17.java      // If using other class include the classname.java after player17.java
+
 
 #To create the submission
-jar	 cmf	 MainClass.txt	 submission.jar	 player17.class
+jar	 cmf	 MainClass.txt	 submission.jar	 player17.class  // If using other class include the classname.class after player17.class
 
 #Add path to avoid error 
 export	LD_LIBRARY_PATH= <your folder location>
