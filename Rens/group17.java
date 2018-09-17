@@ -16,7 +16,7 @@ public class group17 implements ContestSubmission
     private int evaluations_limit_;
     
     public static final double STANDARDDEVSETUP = 1;
-    public static final int NUMBEROFPOP = 100;
+    public static final int NUMBEROFPOP = 25;
     
 	
 	public group17()
@@ -62,20 +62,7 @@ public class group17 implements ContestSubmission
 	
 
 	
-	public double[] returnRandomMutation(double[] currentChild) {
-		
-		Random r = new Random();
-		int randomNum =  r.nextInt((currentChild.length-1) + 1);
-		int randomMut = r.nextInt(2);
-		double[] randomMutArray;
-		randomMutArray = currentChild;
-		
-		
-		randomMutArray[randomNum] = randomMut;
-		
-		return randomMutArray;
-		
-	}
+
 	
 	public void printDoubleArray(double[] printedArray) {
 		for (int i =0; i< printedArray.length; i++) {
@@ -96,33 +83,9 @@ public class group17 implements ContestSubmission
 		return newChild;
 	}
 	
-	public double[] combineParents(double[] parent1,double[] parent2) {
-		Random r = new Random();
-		double[] newChild = new double[10]; 
-		
-		int randomSplitPosition = r.nextInt(parent1.length-1);
-		for (int i = 0 ;i <=randomSplitPosition;i++) {
-			newChild[i] = parent1[i];
-		}
-		for (int j = randomSplitPosition ;j <parent2.length;j++) {
-			newChild[j] = parent2[j];
-		}
-		
-		return newChild;
-	}
-	
-	public double generateNewStdev(double oldStdevMutate,int evalNum) {
-		Random r = new Random();
-		double learning = 1/(Math.pow(evalNum, 0.5));
-		double newStdevMutate = oldStdevMutate * Math.exp(learning * r.nextGaussian());
-		return newStdevMutate;
-	}
-	
 
 	Chromosome[] createInitialPopulation(int numberOfPops) {
-		
-		
-		
+			
 		Chromosome[] kids = new Chromosome[NUMBEROFPOP];
 		for (int i =0;i < numberOfPops;i++) {
 			
@@ -144,9 +107,7 @@ public class group17 implements ContestSubmission
 		System.out.println(evaluation_.getProperties());
 		int evals = 0;
 		
-			
-		
-	
+
 		//Init
 		Chromosome[] parents = createInitialPopulation(NUMBEROFPOP);
 		Chromosome[] kids = new Chromosome[NUMBEROFPOP];
@@ -165,9 +126,9 @@ public class group17 implements ContestSubmission
 		double[] meansParameters = new double[10];
 		double[] stDevParas = new double[10];
 		
-		double stDev = 1;
-		
-		
+		double stDev = STANDARDDEVSETUP;
+		double topFit = 0;
+		double unchanged = 0;
 		
 		while(evals<evaluations_limit_){
         	
@@ -191,35 +152,53 @@ public class group17 implements ContestSubmission
 				stDevParas[i] = (tempStdev/first25Percent);
 			}
 			
-			
-			
-			
+
+			//Crossover
+        	//Mutation
+        	
 			for (int i=0;i<NUMBEROFPOP;i++) {
 				
 				
 				double[] parametersIndividual = new double[10];
 				for (int j = 0;j<10;j++) {
-					parametersIndividual[j] = r.nextGaussian() + meansParameters[j];
+					parametersIndividual[j] = r.nextGaussian()*stDev + meansParameters[j];
 				}
 				kids[i] = new Chromosome(parametersIndividual);
 				
 			}
 			
-			//Crossover
-        	
-        	
-        	
-        	//Mutation
-        	
-    
+			
+
 			
 			//Evaluate kids
 			for (int i =0 ; i < NUMBEROFPOP ; i++) {
-				kids[i].setFitness((double) evaluation_.evaluate(kids[i].getIndividual()));
+				double tempFitness = (double) evaluation_.evaluate(kids[i].getIndividual());
+				kids[i].setFitness(tempFitness);
+				if (topFit < tempFitness) {
+					topFit = tempFitness;
+					stDev = stDev - stDev/10;
+					unchanged = 0;
+					
+					//System.out.println(kids[i].getFitness()+","+evals+","+stDev);
+					//System.out.print(kids[i].getFitness()+",");
+				} else if(unchanged >= NUMBEROFPOP*3) {
+					
+					stDev = STANDARDDEVSETUP;
+					topFit = 0;
+					unchanged = 0;
+					
+				} else {
+					unchanged ++;
+				}
 				evals++;
+				//System.out.printf("%.2f,", kids[i].getFitness()); 
+				//System.out.print(kids[i].getFitness()+ ",");
+				//printDoubleArray(kids[i].getIndividual());
 			}
             
 			
+			
+			stDev = stDev - stDev/10;
 			parents = kids;
         }
 	}
