@@ -1,0 +1,20 @@
+
+export LD_LIBRARY_PATH=<Root folder location> // like /home/<user>/.. for ubuntu
+
+javac	-cp	contest.jar	 group17.java Chromosome.java Island.java
+
+jar	 cmf	 MainClass.txt	 submission.jar	 group17.class Chromosome.class Island.class
+
+java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1
+java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1 | python islandmodel.py
+
+java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1
+java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1 | python islandmodel.py
+
+java -jar testrun.jar -submission=group17  -evaluation=SphereEvaluation -seed=1 
+java -jar testrun.jar -submission=group17  -evaluation=SphereEvaluation -seed=1 |python islandmodel.py
+
+java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1
+java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1 |python islandmodel.py
+
+| python graph.py
