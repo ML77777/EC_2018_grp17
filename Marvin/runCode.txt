@@ -1,20 +1,77 @@
 
-export LD_LIBRARY_PATH=<Root folder location> // like /home/<user>/.. for ubuntu
+----------------------------------python mean.py usage-----------------------------------------------------
+
+Same use as pythonislandmodel.py, put it behind a command to use that as input with: | python mean.py
+
+- The score that gets printed after a run is catched by the script to calculate an mean and save it csv files with , as seperator to have it in columns instantly when opening with LibreOffice Calc or excel. There are 2 csv files, all_seeds.csv and only_means.csv. Only means contain as the name suggests only means of seeds test. all_seeds  contains every seed test score.
+
+- The script takes in total 4 arguments: python mean.py <function B/S/K required> <Parameter value> <Parameter name> <Parameter type><
+	where the first one is required and others are optional, first argument must be B for BentCigar, S for Schaffers and K for Katsuura. Make sure to fill in the correct one, otherwise will save 		with other function name than it is really is 
+	Parameter value can be a specified value or -1 for parameter control. -1 will be filled in if only 2 arguments are given
+	Parameter name can be any what you like 
+	Parameter type can be filled in as well, Probably: tune, control-determinstic, control-adaptive of some sort, if it is clear for yourself
+
+- A for loop can be executed in general, and those multitple tests can be used to compute the mean, for example in parameter control for BentCigar with 50 seeds tests, $i is the seed number in for loop:
+
+for i in {1..50};do java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B -1 parameter_name control
+
+- 2 nested for loops can be used for tuning, 1 for loop is determine the tune values that it changes, and second for loop determines how many seeds tests like before:
+Here it takes on 3 tune values, from 1 to 3. And for each value perform 10 seeds tests. Note that here the variable is used indicated with -D<variable_name>=<value>
+then in group17 script make sure to retrieve it and assign it with double <variable> = Double.parseDouble(System.getProperty("<variable_name>"));. The variable gets assigned the $j value in the loop
+
+
+for j in {1..3}; do for i in {1..10};do java -Delim_interval=$j -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B $j parameter_name tune;done
+
+
+----------------------------------Initiliazation if ubuntu/mac?-----------------------------------------------------
+
+export LD_LIBRARY_PATH=<location_folder>
 
 javac	-cp	contest.jar	 group17.java Chromosome.java Island.java
-
 jar	 cmf	 MainClass.txt	 submission.jar	 group17.class Chromosome.class Island.class
+
+----------------------------------BentCigarFunction --------------------------------------------------------------
 
 java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1
 java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1 | python islandmodel.py
 
+java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1 |python mean.py  
+
+//Parameter tuning with 2 for loops, first for loop determines the range of tuning values for parameter, second loop determines amount of seeds tests per tuning value
+//-D<variablename>=<somevalue> must be added for paramater tuning variablem here is elim_interval, make sure to assign it somewhere in script double <variable> = Double.parseDouble(System.getProperty("elim_interval"));
+
+for j in {1..3}; do for i in {1..2};do java -Delim_interval=$j -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B $j parameter_name tune;done
+
+//Parameter control with 1 for loop, the range of amount seeds, so the average of how many tests
+for i in {1..3};do java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B -1 parameter_name control
+
+----------------------------------SchaffersEvaluation----------------------------------------------------------
 java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1
 java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1 | python islandmodel.py
+java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1 | python mean.py
 
+//Tuning, I used elim_interval as name, but change it for you and retrieve it in script with that name Double.parseDouble(System.getProperty("<variable_name>"));
+for j in {1..3}; do for i in {1..2};do java -Delim_interval=$j -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=$i ;done | python mean.py S $j parameter_name tune;done
+
+//Control
+for i in {1..3};do java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=$i ;done | python mean.py S -1 parameter_name control
+
+----------------------------------SphereEvaluation------------------------------------------------------------
 java -jar testrun.jar -submission=group17  -evaluation=SphereEvaluation -seed=1 
 java -jar testrun.jar -submission=group17  -evaluation=SphereEvaluation -seed=1 |python islandmodel.py
 
+----------------------------------KatsuuraEvaluation --------------------------------------------------------
 java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1
 java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1 |python islandmodel.py
+java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1 |python mean.py
 
+//Tuning, I used elim_interval as name, but change it for you and retrieve it in script with that name Double.parseDouble(System.getProperty("<variable_name>"));
+for j in {1..3}; do for i in {1..2};do java -Delim_interval=$j -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K $j parameter_name tune;done
+
+//Control
+for i in {1..3};do java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K -1 parameter_name control
+
+-------------------------------------------------------------------------------------------------------------
 | python graph.py
+
+
