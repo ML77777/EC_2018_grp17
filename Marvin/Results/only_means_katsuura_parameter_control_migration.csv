@@ -1,0 +1,6 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+KatsuuraEvaluation,migraion_island,deterministic,-1,50,9.016212114273875
+KatsuuraEvaluation,migraion_island,adaptive_reaching_maxunchanged,-1,50,9.02305193353094
+KatsuuraEvaluation,migraion_island,adaptive_prepcount_is_crossinterval_divide_islands,-1,50,8.744031486944557
+KatsuuraEvaluation,migraion_island,adaptive_prepcount_is_crossinterval_divide_2,-1,50,8.751375684003193
+KatsuuraEvaluation,migraion_island,determinstic_but_divide_by_2,-1,50,8.781135073205803
