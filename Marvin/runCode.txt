@@ -25,14 +25,15 @@ for j in {1..3}; do for i in {1..10};do java -Delim_interval=$j -jar testrun.jar
 
 ----------------------------------Initiliazation if ubuntu/mac?-----------------------------------------------------
 
-export LD_LIBRARY_PATH=<location_folder>
-
+export LD_LIBRARY_PATH=/home/marvin/Documenten/Evolutionary_computing_assignment/Island_model
 javac	-cp	contest.jar	 group17.java Chromosome.java Island.java
 jar	 cmf	 MainClass.txt	 submission.jar	 group17.class Chromosome.class Island.class
 
 ----------------------------------BentCigarFunction --------------------------------------------------------------
 
 java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1
+java -Delim_interval=4 -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1
+java -Dcross_interval=50 -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1
 java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1 | python islandmodel.py
 
 java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1 |python mean.py  
@@ -43,10 +44,12 @@ java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=1
 for j in {1..3}; do for i in {1..2};do java -Delim_interval=$j -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B $j parameter_name tune;done
 
 //Parameter control with 1 for loop, the range of amount seeds, so the average of how many tests
-for i in {1..3};do java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B -1 parameter_name control
+for i in {1..5};do java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B -1 elim_interval determinstic_V1
+for i in {1..5};do java -jar testrun.jar -submission=group17  -evaluation=BentCigarFunction -seed=$i ;done | python mean.py B -1 cross_interval determinstic_V2
 
 ----------------------------------SchaffersEvaluation----------------------------------------------------------
 java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1
+java -Delim_interval=4 -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1
 java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1 | python islandmodel.py
 java -jar testrun.jar -submission=group17  -evaluation=SchaffersEvaluation -seed=1 | python mean.py
 
@@ -62,6 +65,8 @@ java -jar testrun.jar -submission=group17  -evaluation=SphereEvaluation -seed=1 
 
 ----------------------------------KatsuuraEvaluation --------------------------------------------------------
 java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1
+java -Delim_interval=200 -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1
+java -Dcross_interval=500 -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1
 java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1 |python islandmodel.py
 java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=1 |python mean.py
 
@@ -69,7 +74,12 @@ java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=
 for j in {1..3}; do for i in {1..2};do java -Delim_interval=$j -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K $j parameter_name tune;done
 
 //Control
-for i in {1..3};do java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K -1 parameter_name control
+for i in {1..5};do java -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K -1 elim_island adaptive_version
+for i in {1..5};do java -Dcross_interval=500 -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K 500 cross_interval tune
+for i in {1..5};do java -Delim_interval=4 -jar testrun.jar -submission=group17  -evaluation=KatsuuraEvaluation -seed=$i ;done | python mean.py K 4 elim_interval tune
+
+
+
 
 -------------------------------------------------------------------------------------------------------------
 | python graph.py
