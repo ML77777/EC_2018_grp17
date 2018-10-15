@@ -190,7 +190,7 @@ public class group17 implements ContestSubmission
 		//cross_interval = (int) Double.parseDouble(System.getProperty("cross_interval"));
 		cross_interval = (int)((total_generation-current_generation)/numberOfIslands);
 		//cross_interval = (int)((total_generation-current_generation)/2);
-    System.out.println("cross interval: " + cross_interval);
+    //System.out.println("cross interval: " + cross_interval);
     int amount_to_swap = (int) NUMBEROFPOP/2;
 
 
@@ -283,7 +283,9 @@ public class group17 implements ContestSubmission
 				 cross_interval = (int)((total_generation-current_generation)/numberOfIslands);
 				 //cross_interval = (int)((total_generation-current_generation)/2);
 
-				 System.out.println("Cross interval " + cross_interval);
+				 //amount_to_swap parameter - deterministic/adaptive version can come here
+
+				 //System.out.println("Cross interval " + cross_interval);
 
          islandArray = Migrationislands(islandArray, amount_to_swap);
 			}
