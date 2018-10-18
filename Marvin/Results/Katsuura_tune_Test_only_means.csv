@@ -1,0 +1,4 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+KatsuuraEvaluation,migraion_island,tune,80,50,9.327173638759552
+KatsuuraEvaluation,migration_island,tune,140,50,9.327173638759552
+KatsuuraEvaluation,migration_island,tune,140,50,9.148436737230998
