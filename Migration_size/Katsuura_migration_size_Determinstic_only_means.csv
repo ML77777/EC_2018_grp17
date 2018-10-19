@@ -1,0 +1,2 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+KatsuuraEvaluation,migration_size,determinstic,-1,50,8.749130974758366

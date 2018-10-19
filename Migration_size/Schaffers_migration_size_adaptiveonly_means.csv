@@ -1,0 +1,2 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+SchaffersEvaluation,migration_size,adaptive,-1,50,9.994867977433566
