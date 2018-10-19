@@ -1,0 +1,2 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+BentCigar,migration_size,adaptive,-1,50,9.988092974240539
