@@ -1,0 +1,27 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+SchaffersEvaluation,migration_size,tune,0,50,9.995723383895225
+SchaffersEvaluation,migration_size,tune,1,50,9.996925951873791
+SchaffersEvaluation,migration_size,tune,2,50,9.994944658245428
+SchaffersEvaluation,migration_size,tune,3,50,9.995145381678787
+SchaffersEvaluation,migration_size,tune,4,50,9.994188032634673
+SchaffersEvaluation,migration_size,tune,5,50,9.993323730765475
+SchaffersEvaluation,migration_size,tune,6,50,9.994856127128942
+SchaffersEvaluation,migration_size,tune,7,50,9.993068827943487
+SchaffersEvaluation,migration_size,tune,8,50,9.9935155166121
+SchaffersEvaluation,migration_size,tune,9,50,9.991515412658577
+SchaffersEvaluation,migration_size,tune,10,50,9.9914748947342
+SchaffersEvaluation,migration_size,tune,11,50,9.99380165803864
+SchaffersEvaluation,migration_size,tune,12,50,9.994213868510741
+SchaffersEvaluation,migration_size,tune,13,50,9.993362130342577
+SchaffersEvaluation,migration_size,tune,14,50,9.993317611523857
+SchaffersEvaluation,migration_size,tune,15,50,9.994493535216222
+SchaffersEvaluation,migration_size,tune,16,50,9.995658837104113
+SchaffersEvaluation,migration_size,tune,17,50,9.994550969799308
+SchaffersEvaluation,migration_size,tune,18,50,9.99354599581306
+SchaffersEvaluation,migration_size,tune,19,50,9.994291546258351
+SchaffersEvaluation,migration_size,tune,20,50,9.99559790713392
+SchaffersEvaluation,migration_size,tune,21,50,9.995053518446282
+SchaffersEvaluation,migration_size,tune,22,50,9.99614319545575
+SchaffersEvaluation,migration_size,tune,23,50,9.994801210000658
+SchaffersEvaluation,migration_size,tune,24,50,9.995770101203838
+SchaffersEvaluation,migration_size,tune,25,50,9.995185072925635

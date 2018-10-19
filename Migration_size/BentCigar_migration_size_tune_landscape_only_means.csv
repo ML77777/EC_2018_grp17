@@ -1,0 +1,27 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+BentCigar,migration_size,tune,0,50,9.987635118909084
+BentCigar,migration_size,tune,1,50,9.988213242388797
+BentCigar,migration_size,tune,2,50,9.988807738588806
+BentCigar,migration_size,tune,3,50,9.987994320589754
+BentCigar,migration_size,tune,4,50,9.987740628174267
+BentCigar,migration_size,tune,5,50,9.988455590799074
+BentCigar,migration_size,tune,6,50,9.988199875130288
+BentCigar,migration_size,tune,7,50,9.987686416430138
+BentCigar,migration_size,tune,8,50,9.988067427081129
+BentCigar,migration_size,tune,9,50,9.988330909557355
+BentCigar,migration_size,tune,10,50,9.987070720762162
+BentCigar,migration_size,tune,11,50,9.9878770684384
+BentCigar,migration_size,tune,12,50,9.98817338192254
+BentCigar,migration_size,tune,13,50,9.987809323797135
+BentCigar,migration_size,tune,14,50,9.987412794156498
+BentCigar,migration_size,tune,15,50,9.988136972424348
+BentCigar,migration_size,tune,16,50,9.987171087084024
+BentCigar,migration_size,tune,17,50,9.987142012592708
+BentCigar,migration_size,tune,18,50,9.986843493461492
+BentCigar,migration_size,tune,19,50,9.988060235282536
+BentCigar,migration_size,tune,20,50,9.987692958879444
+BentCigar,migration_size,tune,21,50,9.987255594426475
+BentCigar,migration_size,tune,22,50,9.9869214464815
+BentCigar,migration_size,tune,23,50,9.98731494796239
+BentCigar,migration_size,tune,24,50,9.987851366723001
+BentCigar,migration_size,tune,25,50,9.987107720177649

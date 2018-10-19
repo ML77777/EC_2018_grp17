@@ -1,0 +1,27 @@
+Function,Parameter name,Parameter type,Parameter tune value,Amount seeds,Mean score
+KatsuuraEvaluation,migration_size,tune,0,10,8.783720852499593
+KatsuuraEvaluation,migration_size,tune,1,10,9.103155376663048
+KatsuuraEvaluation,migration_size,tune,2,10,8.840508645826006
+KatsuuraEvaluation,migration_size,tune,3,10,9.168847403091219
+KatsuuraEvaluation,migration_size,tune,4,10,8.902934850371306
+KatsuuraEvaluation,migration_size,tune,5,10,8.902988112987035
+KatsuuraEvaluation,migration_size,tune,6,10,9.03055710740951
+KatsuuraEvaluation,migration_size,tune,7,10,9.076613566159631
+KatsuuraEvaluation,migration_size,tune,8,10,9.00205189360737
+KatsuuraEvaluation,migration_size,tune,9,10,9.206261419667147
+KatsuuraEvaluation,migration_size,tune,10,10,9.158408274223586
+KatsuuraEvaluation,migration_size,tune,11,10,9.156877221585972
+KatsuuraEvaluation,migration_size,tune,12,10,8.99797619565719
+KatsuuraEvaluation,migration_size,tune,13,10,9.189169084120568
+KatsuuraEvaluation,migration_size,tune,14,10,8.893450240580059
+KatsuuraEvaluation,migration_size,tune,15,10,8.886608311964178
+KatsuuraEvaluation,migration_size,tune,16,10,9.187165182670174
+KatsuuraEvaluation,migration_size,tune,17,10,9.063041913693835
+KatsuuraEvaluation,migration_size,tune,18,10,8.991231302530617
+KatsuuraEvaluation,migration_size,tune,19,10,9.042854868686101
+KatsuuraEvaluation,migration_size,tune,20,10,9.154340334908275
+KatsuuraEvaluation,migration_size,tune,21,10,9.054044270946646
+KatsuuraEvaluation,migration_size,tune,22,10,9.196795389603947
+KatsuuraEvaluation,migration_size,tune,23,10,8.9655568540214
+KatsuuraEvaluation,migration_size,tune,24,10,9.116221473376665
+KatsuuraEvaluation,migration_size,tune,25,10,9.168335957761297
