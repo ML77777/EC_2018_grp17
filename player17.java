@@ -159,10 +159,7 @@ public class player17 implements ContestSubmission
 
       //Island level
       for (int i = 0; i < islandArray.length; i = i+2){
-					int i1 = rnd_.nextInt(10);
-					int i2 = rnd_.nextInt(10);
-
-           first_island = islandArray[i];
+				   first_island = islandArray[i];
 					 second_island = islandArray[i+1];
 
            first_population_island = first_island.getPopulation();
@@ -170,14 +167,11 @@ public class player17 implements ContestSubmission
 
            //Population/Individual level
 					 for (int j = 0; j < amount_to_swap;j++){
-						 int j1 = rnd_.nextInt(25);
-						 int j2 = rnd_.nextInt(25);
+               first_island_individual = first_population_island[j];
+							 second_island_individual = second_population_island[j];
 
-               first_island_individual = first_population_island[j1];
-							 second_island_individual = second_population_island[j2];
-
-							 first_population_island[j1] = second_island_individual;
-							 second_population_island[j2] = first_island_individual;
+							 first_population_island[j] = second_island_individual;
+							 second_population_island[j] = first_island_individual;
 					 }
 			}
 			return islandArray;
@@ -253,18 +247,20 @@ public class player17 implements ContestSubmission
 					//System.out.println(kids[i].getFitness()+ " " +islandArray[k].getSDDev() + " " +islandArray[k].unchanged+ " " +islandArray[k].topFitness + " " + k);
 				  //System.out.println(kids[i].getFitness() + "|"+k);
 					//System.out.println(kids[i].getFitness());
-
 					evals ++;
 				}
 
 				//Add them to the Island
+				double fitness_islandk_old = islandArray[k].topFitness; // original topFitness for island k
 				for (int i =0 ;i<kids.length;i++) {
 					islandArray[k].addKidChromosome(kids[i]);
-					if (islandArray[k].newTopFit){
-						number_better++;
-					}
 				}
 				islandArray[k].kidsBecomeParents();
+
+				// count number of island with better fitness
+				if (islandArray[k].topFitness > fitness_islandk_old){
+					number_better++; // number of island with better fitness
+				}
 			}
 
 			//Crossover
@@ -284,12 +280,12 @@ public class player17 implements ContestSubmission
 				islandArray = Migrationislands(islandArray, amount_to_swap);
 			}*/
 			// adaptive control for amount_to_swap
-			if (number_better/250 > 0.7){
+			if (number_better>=8){
 				if (amount_to_swap >= 3){
 					amount_to_swap--;
 				}
 			}
-			if (number_better/250 < 0.3){
+			if (number_better<=3){
 				if (amount_to_swap <= 12 ){
 					amount_to_swap++;
 				}
