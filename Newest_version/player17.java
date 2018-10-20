@@ -9,7 +9,7 @@ import java.util.Collections; // Added myself, so remove later probably if viola
 
 
 
-public class group17 implements ContestSubmission
+public class player17 implements ContestSubmission
 {
 
 	Random rnd_;
@@ -20,7 +20,7 @@ public class group17 implements ContestSubmission
     public static final int NUMBEROFPOP = 25;
     int evals = 0;
 
-	public group17()
+	public player17()
 	{
 		rnd_ = new Random();
 
@@ -186,10 +186,10 @@ public class group17 implements ContestSubmission
      //For Migrationislands
     Island[] tocrossoverislands;
 		Island[] islandArray = new Island[numberOfIslands];
-		int cross_interval;
+		int cross_interval ;
 		//cross_interval = (int) Double.parseDouble(System.getProperty("cross_interval"));
-		//cross_interval = 80;
-		cross_interval = (int)((total_generation-current_generation)/numberOfIslands);
+		cross_interval = 80;
+		//cross_interval = (int)((total_generation-current_generation)/numberOfIslands);
 		//cross_interval = (int)((total_generation-current_generation)/2);
     //System.out.println("cross interval: " + cross_interval);
     int amount_to_swap = 12;
@@ -260,14 +260,13 @@ public class group17 implements ContestSubmission
 				}
 				islandArray[k].kidsBecomeParents();
 
-				// count number of island with better fitness
-				if (islandArray[k].topFitness > fitness_islandk_old){
-					number_better++; // number of island with better fitness
-				}
+				// count number of island with better fitness for adaptive migration size
+				//if (islandArray[k].topFitness > fitness_islandk_old){
+				//	number_better++; // number of island with better fitness
+				//}
 			}
 
-			//Crossover
-      //adaptive
+			//Migration interval adaptive
 		  /*boolean cross_island = false;
 			for (int i = 0; i < numberOfIslands;i++) {
 					//if (islandArray[i].getPrep_elim() == cross_interval){
@@ -285,7 +284,9 @@ public class group17 implements ContestSubmission
 				}
 				islandArray = Migrationislands(islandArray, amount_to_swap);
 			}*/
-			if (number_better>=8){
+
+			//Migration size adaptive
+			/*if (number_better>=8){
 				if (amount_to_swap >= 3){
 					amount_to_swap--;
 				}
@@ -294,24 +295,24 @@ public class group17 implements ContestSubmission
 				if (amount_to_swap <= 12 ){
 					amount_to_swap++;
 				}
-			}
-			
+			}*/
+
       //Tune and Determinstic
 			generation_cycle++;
 			current_generation++;
 			if (generation_cycle == cross_interval){
          generation_cycle = 0;
-				 cross_interval = (int)((total_generation-current_generation)/numberOfIslands);
+				 //cross_interval = (int)((total_generation-current_generation)/numberOfIslands);
 				 //cross_interval = (int)((total_generation-current_generation)/2);
 
 				 //System.out.println("Cross interval " + cross_interval);
 
          islandArray = Migrationislands(islandArray, amount_to_swap);
 
-				 //if (amount_to_swap>=3){
-					// amount_to_swap--;
+        //Determinstic migration size
+				//if (amount_to_swap>=3){
+				//	 amount_to_swap--;
 				 //}
-
 			}
 
 		}
